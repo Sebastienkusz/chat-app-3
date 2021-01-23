@@ -1,20 +1,27 @@
+import PropTypes from 'prop-types';
+import React from 'react';
 import './Contact.css';
 
-function Contact() {
-    const name = 'Sally Diaz';
-    const avatar = 'https://randomuser.me/api/portraits/women/93.jpg';
-    const online = true;
+function Contact(props) {
+    
     return (
         <figure className="Contact">
-            <img className="avatar" src={avatar} alt={name} />
+            <img className="avatar" src={props.avatar} alt={props.name} />
             <div>
-                <h4 className="name">{name}</h4>
+                <h4 className="name">{props.name}</h4>
                 <div className="status">
-                    <div className={online ? 'status-online' : 'status-offline'}></div>
-                    <div className="status-text">{online ? "Online" : "Offline"}</div>
+                    <div className={props.online ? 'status-online' : 'status-offline'}></div>
+                    <div className="status-text">{props.online ? "Online" : "Offline"}</div>
                 </div>
             </div>
         </figure>
     );
 }
+
+Contact.propTypes = {
+    avatar: PropTypes.string,
+    name: PropTypes.string,
+    online: PropTypes.bool,
+};
+
 export default Contact;
